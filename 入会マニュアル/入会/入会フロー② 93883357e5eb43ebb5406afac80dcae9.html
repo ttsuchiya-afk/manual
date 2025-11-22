@@ -1,0 +1,743 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>入会フロー②</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="93883357-e5eb-43eb-b540-6afac80dcae9" class="page sans"><header><h1 class="page-title">入会フロー②</h1><p class="page-description"></p></header><div class="page-body"><p id="1976db50-6e9d-803c-8e8e-d5e3c4091663" class="">
+</p><p id="1976db50-6e9d-801b-a182-c7d34c9436c7" class="">入会時の流れ（会員システム入力）</p><hr id="67574a8a-34e9-4ef0-af47-303b93c5d6a4"/><h1 id="d4d24453-4b84-4f0f-997d-f78654be49b6" class="">目的</h1><hr id="9e7dbaba-d9f0-48af-91f8-a243c6a4f350"/><p id="9fe7bd26-3c7b-4e9d-a825-b5fbeab88a00" class="">入会時に会員様の情報を会員システムに入力したり撮影したりすること</p><p id="1976db50-6e9d-80b0-a481-c46b6f8832d4" class="">
+</p><p id="1976db50-6e9d-804e-b393-c4e25f1e1524" class="">
+</p><p id="1976db50-6e9d-808c-b4f0-cdce201fc787" class="">
+</p><p id="1976db50-6e9d-80f4-8eb8-f5859c1f62c5" class="">
+</p><p id="1976db50-6e9d-8013-87cd-e3da8f9049e8" class="">
+</p><p id="6f2dfbfd-6de3-437d-a9d8-3d3cb29f7e40" class="">会員様の情報を管理すること</p><p id="e13e0d3e-1b89-4c22-b79d-bf8a85bc31f4" class="">
+</p><h2 id="2f99cc1a-1c6f-4847-ac45-55c3d87d31a1" class="">ルール</h2><hr id="0e8e16e3-1e78-446a-916c-5a7ddf815042"/><p id="06e36b23-ff22-47ca-91d7-906f4ccc17d2" class="">会員システムを使用</p><p id="a26a3535-d30b-45f0-88b1-b7b3b6be132e" class="">
+</p><h1 id="71d49ba4-80df-4225-994f-76be3250a7f1" class="">手順</h1><hr id="58165a20-2217-4d35-bf01-9967a16489ef"/><p id="425ac3b9-f159-4ca5-bf35-8257ffc3106e" class="">
+</p><h2 id="5d8eb7d1-24d6-46d8-97c5-0c18531a004a" class="">１．来店情報の入力</h2><p id="2d35b1a7-c207-4b09-8ad6-69c64524abda" class="">
+</p><h3 id="aa2150d7-da97-4bcc-868f-7862e4bc7eb4" class="">■予約情報がある場合</h3><ol type="1" id="dc865750-3610-4a80-abb0-884d422c5e10" class="numbered-list" start="1"><li>ホーム画面「本日の来店者一覧」該当者の「来店した」にチェックを入れ、来店目的の<br/>「入会希望」を選択<figure id="cc1278bb-f88e-46f6-a8c7-81bf5e5d5505" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/037b7652-c13f-11ed-a03b-064017533d40.png"><img style="width:681.9896240234375px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/037b7652-c13f-11ed-a03b-064017533d40.png"/></a></figure></li></ol><ol type="1" id="6c3481c1-df32-4771-9a3a-69e379745ce4" class="numbered-list" start="2"><li>「入会登録へ進む」をクリック<figure id="dfbc293e-5864-447e-93db-382d6b2d6eb6" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/11f90f5a-c13f-11ed-8f74-06720a606bea.png"><img style="width:681.9791870117188px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/11f90f5a-c13f-11ed-8f74-06720a606bea.png"/></a></figure></li></ol><ol type="1" id="3212ccf4-fe82-4e34-afed-96de64f7c6d5" class="numbered-list" start="3"><li>新規入会登録の画面が表示される<figure id="e007fa0d-f496-4bbe-b1e6-e2a190ba6b86" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/05e955fc-b5ab-11ed-9b58-06720a606bea.png"><img style="width:528px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/05e955fc-b5ab-11ed-9b58-06720a606bea.png"/></a></figure></li></ol><p id="7ed99960-fd7f-43f2-831e-1b65f2738599" class="">
+</p><p id="5cde047c-4c9e-49f0-986f-fcc558159058" class="">　その後、写真撮影の手順に進む</p><h3 id="18ded827-f05b-4683-9729-996025d40950" class="">■予約が無い場合</h3><ol type="1" id="6c0eef07-96eb-4ce6-8942-23e56256974f" class="numbered-list" start="1"><li>ホーム画面の「来店登録」をクリック</li></ol><p id="37f8e82c-a469-440e-aae6-87df314b66a1" class="">
+</p><figure id="b455565c-714b-4df8-b7ae-667d8e7b5db5" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/4b0c28b8-c13f-11ed-8eb9-06720a606bea.png"><img style="width:488px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/4b0c28b8-c13f-11ed-8eb9-06720a606bea.png"/></a></figure><p id="91530f34-c7a8-42e4-9f36-3d5e42860ce8" class="">
+</p><ol type="1" id="b8217262-e8b9-4baf-929f-70ab85931fc9" class="numbered-list" start="2"><li>来店登録の情報を入力し「この内容で来館予約登録」をクリック</li></ol><p id="a483af4b-ad5f-432d-b6da-e38e2f8cbe52" class="">　　※名前や電話番号は後から修正できるため時間が無ければとりあえず仮で入力してもOK</p><p id="48e45f73-4dca-46be-a8c8-9f38192af099" class="">　　　例：名前→アア　　電話番号→00000000000　など</p><p id="24a0f12c-aae2-43f3-922f-847af6868eec" class="">　　※名前はカナ入力</p><p id="b98b981e-195d-4511-931e-7dcfc7f4912b" class="">　　※電話番号は半角でハイフン無し</p><figure id="2712c5ba-1f27-4369-afd9-7172e1c185b4" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/7495227a-c13f-11ed-a89e-064017533d40.png"><img style="width:709.984375px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/7495227a-c13f-11ed-a89e-064017533d40.png"/></a></figure><p id="76e097b0-7090-433b-9b08-f4e570b35a9a" class="">
+</p><ol type="1" id="e809d130-b30e-4dd0-bd59-c5e3328daf3d" class="numbered-list" start="3"><li>その後の流れは「■予約がある場合」の手順と同じ</li></ol><p id="6a394e28-e831-4cf1-9439-05d920e40ee0" class="">
+</p><h2 id="d35075b6-2d44-4827-a13a-d4be52e3d2a9" class="">２．写真撮影</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="871774f8-8d42-43f7-916f-34f4465bbf43"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">写真撮影の前にクレピコの登録を先に行う</div></figure><p id="17ecdf11-d196-434a-9b58-1dc1846078f0" class="">　やり方は　→　<mark class="highlight-orange_background"><a href="%E3%82%AF%E3%83%AC%E3%83%94%E3%82%B3%E7%99%BB%E9%8C%B2%201b01666ae8b749379a263888bb50899e.html">クレピコ登録</a></mark> 　を参照</p><p id="ca3fec8c-3a2c-4817-9b25-fe4b88d16ef3" class="">
+</p><ol type="1" id="9e6b90b9-e031-4f36-8c3e-1a97a3d1173e" class="numbered-list" start="1"><li>「撮影」をクリック</li></ol><p id="f1af263f-2836-4712-87a0-3202085ab315" class="">
+</p><figure id="b876ed01-af9f-44cd-8bef-87af64001082" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/9d860154-c13f-11ed-823d-064017533d40.png"><img style="width:528px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/9d860154-c13f-11ed-823d-064017533d40.png"/></a></figure><p id="1976db50-6e9d-8052-89e8-f57a68bbb391" class="">
+</p><p id="1976db50-6e9d-8080-8e3a-fb305e787d65" class="">
+</p><p id="6dd0abb0-5a69-4d9f-9f47-ade0aa36d210" class="">
+</p><ol type="1" id="42a6d8e1-cb50-40c1-adbf-5480abbecb14" class="numbered-list" start="2"><li>赤枠の箇所で写真の画角を決め、「撮影する」をクリック</li></ol><p id="a1f7c307-a2c0-477e-98a3-cb53f8736cd1" class="">　※マスクや帽子をしている場合は外してもらう</p><p id="8e4f492b-c19a-45ec-be02-253e88ea724f" class="">　※胸より上が写るようにする</p><figure id="3c2c9ea8-1011-4bc7-a6f1-b8d335640e82" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/c4f98b02-c13f-11ed-967f-064017533d40.png"><img style="width:709.96875px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/c4f98b02-c13f-11ed-967f-064017533d40.png"/></a></figure><p id="70db8dec-efd3-4b92-bb20-8487105af30f" class="">
+</p><p id="d54495d0-5d23-43dd-9cbd-4c80fc73e8fb" class="">
+</p><h2 id="afda7acc-0ee5-40f6-9b73-7fca0ee6c8b0" class="">３．新規入会登録の情報入力</h2><p id="3622cf56-6941-4165-8472-4e2924f8b323" class="">
+</p><ol type="1" id="2ffafb26-e918-46ed-b5a5-2e69206bc0e0" class="numbered-list" start="1"><li>入会申込書を見て情報を入力する</li></ol><p id="3c91355f-a529-424a-82ca-781f205946bd" class="">　※性別・銀行口座登録・入会方法は後で変更できないため間違いが無いよう注意する</p><p id="3f36c3e8-9ca3-46d6-8fb6-86f45ef59d39" class="">
+</p><ul id="6bd6ccb3-9a80-4939-ba47-33293d5bcdd1" class="bulleted-list"><li style="list-style-type:disc">名前（カナ入力）</li></ul><ul id="2006fe5a-b998-494f-a325-7da6516f2bc8" class="bulleted-list"><li style="list-style-type:disc">生年月日</li></ul><ul id="249d9a36-1a4e-4dcf-9f57-a9a4da081abf" class="bulleted-list"><li style="list-style-type:disc">性別の選択</li></ul><ul id="ae61a2d1-a4bb-42c1-951f-97838a870b2e" class="bulleted-list"><li style="list-style-type:disc">銀行口座登録の選択</li></ul><ul id="58838777-4fe4-4e0c-9b66-9ef0f6c46886" class="bulleted-list"><li style="list-style-type:disc">入会方法の選択</li></ul><ul id="4ecc434a-6894-4e94-9a52-1f746d3bf3cb" class="bulleted-list"><li style="list-style-type:disc">オプションの選択</li></ul><p id="8a655e2a-14f0-49a0-841b-598c23df37ec" class="">
+</p><h2 id="f67e92b3-6448-4c64-8308-ca5692dd88dc" class="">４．カード発行</h2><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7dc3b08e-4f6d-4a4c-a916-8283b515647d"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">カード発行している間にアンケートを記入していただく</div></figure><p id="5ba948f3-7ecd-4d97-a879-67884af68470" class="">
+</p><ol type="1" id="52e1e216-8bca-417a-b93b-294ef8512531" class="numbered-list" start="1"><li>カードを設置する<figure id="b3fc2b02-6472-45c0-81a0-1abfac57a880" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/7bb9773e-b7dc-11ed-bd04-06720a606bea.png"><img style="width:681.9896240234375px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/7bb9773e-b7dc-11ed-bd04-06720a606bea.png"/></a></figure><p id="b583b90d-fe1b-452f-8874-a3491a0a2331" class="">
+</p></li></ol><ol type="1" id="e002e3c1-ee7b-4554-a067-01db0cd30cff" class="numbered-list" start="2"><li>セキュリティカードの「登録」をクリック<figure id="d072f00d-2d38-437d-a447-555424f31398" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/1b1ed8a2-c140-11ed-96ff-064017533d40.png"><img style="width:528px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/1b1ed8a2-c140-11ed-96ff-064017533d40.png"/></a></figure><p id="97216e2e-86dc-43cd-9a0e-7d746d04953f" class="">
+</p></li></ol><ol type="1" id="07f48d06-431c-4fb3-8048-889ba42832d7" class="numbered-list" start="3"><li>下記の画像が表示されたら「はい」をクリック<figure id="6a2b791d-bea8-4d3c-b820-3cf4c344252a" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/ed2499b2-b7dc-11ed-b9d2-064017533d40.png"><img style="width:589px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/ed2499b2-b7dc-11ed-b9d2-064017533d40.png"/></a></figure><p id="8f5d2893-2b73-43bd-836b-639eacadf0c4" class="">
+</p></li></ol><ol type="1" id="4adcaa52-3038-495d-b953-d4e5225a5dc1" class="numbered-list" start="4"><li>下記の表示が出たら「pasoriを開く」をクリック<figure id="90ac632c-4641-4881-a862-7e95631ba7c5" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/25bef26a-c140-11ed-afa1-064017533d40.png"><img style="width:648px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/25bef26a-c140-11ed-afa1-064017533d40.png"/></a></figure><p id="6b43783c-98e3-4143-a594-00069b5b3e35" class="">
+</p></li></ol><ol type="1" id="f8559ef6-d013-4628-82fb-17a9425fdc49" class="numbered-list" start="5"><li>カードが刺さっているかもう一度確認してOKなら「読み込み開始」をクリック<figure id="6ab3ff59-0028-45cf-bc09-8d5ceeb74205" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/3075b59a-c140-11ed-b0b0-064017533d40.png"><img style="width:681.9791870117188px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/3075b59a-c140-11ed-b0b0-064017533d40.png"/></a></figure><p id="e25dff05-4949-43aa-8209-fefd71c000ab" class="">
+</p></li></ol><ol type="1" id="bba3197a-0ed3-44ec-81b5-66a696706e6e" class="numbered-list" start="6"><li>読み込みが完了したら「元の画面に戻る」をクリック<figure id="623f26a1-31be-49e3-9e76-21ad5f7545a9" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/886254a6-c21d-11ed-be92-064017533d40.png"><img style="width:603px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/886254a6-c21d-11ed-be92-064017533d40.png"/></a></figure><p id="2ac37fc2-34ba-4323-a685-4d9025e4d259" class="">
+</p><p id="98fff71e-a032-4b9a-a80b-3840d08c2ff2" class="">
+</p><h1 id="5090d587-a731-4672-800d-a4b711e5b9a7" class="">登録完了</h1><p id="fd21b8ad-bbfc-47b8-ba03-5d320bd94792" class="">
+</p><ol type="1" id="2271eed5-0c91-4a04-bec4-d750630040e9" class="numbered-list" start="1"><li>全ての入力登録が終わったら一番下の「内容確認へ進む」をクリック<figure id="fe2c3c24-ab77-411e-ac6d-617797ddd344" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/238c5a26-c21e-11ed-97ac-06720a606bea.png"><img style="width:622px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/238c5a26-c21e-11ed-97ac-06720a606bea.png"/></a></figure><p id="a74d1e0d-fef8-41d7-9770-f4e373aaf970" class="">
+</p></li></ol><ol type="1" id="1a16d2cd-2aae-400f-91dd-77eb1ff6fcea" class="numbered-list" start="2"><li>入力内容が間違ってないか確認しながらチェックを入れる<figure id="5d70ff11-4a09-4876-989c-a263e7ef20ca" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/65c3d478-c21e-11ed-9f7a-06720a606bea.png"><img style="width:491px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/65c3d478-c21e-11ed-9f7a-06720a606bea.png"/></a></figure><p id="8c79635e-57f0-436b-a23d-578d3661d1ab" class="">
+</p></li></ol></li></ol><p id="f16248be-482c-4b5c-aa01-c55118b6a359" class="">３．すべてのチェックを入れた後「この内容で新規入会登録」をクリック</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="075a7d44-4556-4e96-90e2-191b17fff2e9"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">料金詳細が表示されるのでそれを見て入会申込書に金額を記載して会計する</div></figure><p id="96abb164-7553-4ddb-b32b-6f496218c034" class="">
+</p><figure id="ec555877-6c2a-4002-8e0a-b0d1df496ed9" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/d2536cac-c21e-11ed-bb20-064017533d40.png"><img style="width:459px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1/d2536cac-c21e-11ed-bb20-064017533d40.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

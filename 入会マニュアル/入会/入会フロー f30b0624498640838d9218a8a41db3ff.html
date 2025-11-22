@@ -1,0 +1,734 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>入会フロー</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="f30b0624-4986-4083-8d92-18a8a41db3ff" class="page sans"><header><h1 class="page-title">入会フロー</h1><p class="page-description"></p></header><div class="page-body"><hr id="57998c14-197c-412f-8593-caf62a4a91c4"/><h1 id="405d1952-fc32-4e57-87ea-e15b9c706dd1" class="">目的</h1><hr id="c7ae4def-ffd3-4ad8-aa4c-bbc73015e445"/><p id="5dcd0ad2-955f-476a-9054-cc833f797184" class="">入会手続きの流れ</p><h2 id="b0160592-293a-49d0-a49b-2d4b18c12da0" class="">ルール</h2><hr id="89600e12-473c-4b2e-8451-d22fc6af2834"/><p id="5c27b3a0-d95c-4dd9-a73f-4877f92367dd" class="">【通常入会料金】</p><blockquote id="65ac8b3c-3b46-444b-90a0-f699e33e9d44" class="">入会金：5,500円<br/>カード発行手数料：1,100円<br/>会費：5,500円</blockquote><p id="e3c651e4-7c77-44c4-94cf-0b577e71fdab" class="">
+</p><p id="1826cc25-3c2a-407b-b98d-f25037b4b05a" class="">【必要な持ち物】</p><ul id="56ae6e53-8fb9-48d7-abe5-d0b6c6d691b1" class="bulleted-list"><li style="list-style-type:disc">本人確認証明書（運転免許証、健康保険証）</li></ul><ul id="bcef2ea4-e651-40f0-938e-5bdf53bd5c4f" class="bulleted-list"><li style="list-style-type:disc">ご本人もしくは配偶者名義のキャッシュカード</li></ul><p id="e2199395-93eb-40d4-a693-1cfda7c03ad4" class="">　※キャッシュカードが無い場合は通帳と認印でも可</p><p id="672de8fa-074a-4233-bb2c-7569a5830dad" class="">　※未成年でキャッシュカードを持っていない人は保護者のカードでも可</p><p id="2b33ed90-6cc4-481e-8f95-6e864844f7a0" class="">　　（ただし親権者同意書を記載していただく必要有）</p><ul id="1e3dc808-1f73-45f9-be1c-8dd32cf64c9d" class="bulleted-list"><li style="list-style-type:disc">現金、クレジット、電子マネー</li></ul><p id="ddb5bd0c-7fd9-4453-82d4-3e4c74e04d50" class="">
+</p><p id="dce17847-a83d-4547-acfe-dbc2b8971402" class="">【その他】</p><p id="95ae9c11-2627-4992-ac4a-e11dda44ae6d" class="">キャンペーン内容によっては継続の縛りがある</p><h1 id="2740fd06-df7b-414e-8af8-b0189a857202" class="block-color-orange_background">入会案内前に準備しておくこと</h1><h3 id="c89141c8-7dad-4d67-8e4d-6509aed24102" class="block-color-blue_background">１．資料等</h3><ul id="acfd132a-0f22-4632-be2d-1b803f9f12fa" class="bulleted-list"><li style="list-style-type:disc">利用規約</li></ul><ul id="4963840e-1406-4c16-962d-022c985f0af2" class="bulleted-list"><li style="list-style-type:disc">個人情報取扱書</li></ul><ul id="ebc27031-adc2-4680-9700-8b053e2aa478" class="bulleted-list"><li style="list-style-type:disc">お支払い案内書</li></ul><ul id="322f6e00-d098-426f-ad00-1bfd3b225e06" class="bulleted-list"><li style="list-style-type:disc">入会申込書</li></ul><ul id="6ef3deb5-8d44-477f-b615-309bca859b2a" class="bulleted-list"><li style="list-style-type:disc">会員カード</li></ul><ul id="eea6d9e4-2440-4c3e-8cd0-6cab6ff28db5" class="bulleted-list"><li style="list-style-type:disc">（オプション申込書）</li></ul><h3 id="700ae452-0946-49f7-990e-9841d87be869" class="block-color-blue_background">２．クレピコの電源を入れておく</h3><p id="dfaabe1c-e4e3-4271-9e84-173db7d7a97c" class="">　クレピコは電源が入るまで時間がかかるのであらかじめつけておくのがスムーズ</p><h3 id="7e3c1244-1309-4f75-bb29-6a885e6f5e17" class="block-color-blue_background">３．会員システムの来店入力or確認</h3><ul id="2c1748b5-2b00-4965-916e-619b99eb33d7" class="bulleted-list"><li style="list-style-type:disc">来店予約がある場合はチェックを入れるなどの対応</li></ul><ul id="4b8b0dc3-e756-4520-83c0-f31776c3f2ef" class="bulleted-list"><li style="list-style-type:disc">来店予約が無い場合は入力</li></ul><p id="cb950f3a-1db7-45a8-a02e-e93839a9c633" class="">
+</p><p id="fed26809-40f9-4b94-8a34-9a68e65e174b" class="">会員システムの入力は　⇒　 <mark class="highlight-orange_background"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC%E2%91%A1%2093883357e5eb43ebb5406afac80dcae9.html">入会フロー②</a></mark> 　を参照</p><p id="b9eae41a-3116-42d5-a3e6-00e541a65bee" class="">
+</p><h1 id="a80a9ec3-6347-4f45-81a3-c0a6904274ff" class="">手順　入会の流れ</h1><hr id="2751896e-27a3-46b3-8ec2-195d9d779070"/><h2 id="73e0abe0-33bd-48cb-9993-3ed2aa8267f8" class="">１．挨拶</h2><p id="68505b4a-9b8d-4445-bd30-ea9988632e3d" class="">　「本日担当します○○です。宜しくお願い致します。」</p><h2 id="a92fce22-a0b0-4a8c-8926-9d9440164a05" class="">２．持ち物確認</h2><p id="4e4ab2f2-d71b-4202-8226-83c21a9cf274" class="">　「入会に必要な身分証明書と銀行口座のキャッシュカードはお持ちでしょうか」</p><p id="344bb4dc-6745-430a-9743-123a68a0f074" class="">
+</p><p id="a34ecbd1-7178-4ec1-b7b3-6335b5b73b2d" class="block-color-teal_background">　【イレギュラー対応】</p><p id="360e418d-97b3-4893-95ca-2a7a055d8601" class="">　ケース①：身分証明書を持ってきていない人の対応</p><p id="47fbf7d5-64f6-4171-ab3c-6e8d8d43b808" class="">　入会手続きは行わず再度両方持参してからの来店を依頼する</p><p id="3a765785-4d08-48e5-9bd3-4d3d82970135" class="">　（身分証明書が無ければキャッシュカードなどが本人のものか判断がつかないため）</p><p id="c7451e22-b5f4-4803-9a4b-e6bf93c3e364" class="">　ケース②：キャッシュカードを持ってきていない人への対応</p><p id="a057f887-62ec-4ea8-94f5-6d7caf9fda8a" class="">　入会手続きは行えるがセキュリティカードは渡さず、次回来店時にキャッシュカードを<br/>　持ってきてもらい、口座登録手続きが完了したらセキュリティカードを渡す</p><p id="19d916c7-0f35-4d81-a0f1-bdf6c8c76d5d" class="">
+</p><h2 id="208ce38a-c3af-4246-9066-33582fde3f81" class="">３．キャンペーン内容の説明</h2><p id="7bdb0af6-2a8b-44b2-a2a2-3c6420907ba8" class="">　※キャンペーン内容により契約縛りがある場合は必ず確認する</p><p id="f0c33b30-26cf-418f-8fce-bb982d3df9e3" class="">　「キャンペーン利用にあたり、〇ヶ月のご契約継続が必要です。（〇月まで）<br/>　　万が一退会される場合は〇月以降での退会となりますがよろしいでしょうか。」</p><p id="7468309f-3e85-4c3f-968d-6aa58be01f95" class="">　（申請は〇月末までです。）</p><h2 id="f925af2d-6891-47dd-a42f-f256ce3010b3" class="">４．利用規約の案内・確認</h2><p id="a86a6460-d34b-4912-8fbf-12b7b9a09c66" class="">　【特に重要な箇所】<br/>　□第4条（入会資格）</p><p id="30b11a97-b081-4f12-83f1-dec3edaa4227" class="">　□第5条（セキュリティカード）</p><p id="9d562b70-fb89-4a78-b756-3547b8867e39" class="">　　本人のみ有効。<br/>　　会員システムで管理しているため入退館時は必ずカードタッチし認証をすること。<br/>　　紛失時、トラブル等は速やかに当社に届け出、<mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong>再発行手数料1,100円</strong></span></mark></p><p id="a132c1c7-b12a-47bb-8fe3-4cb15ad10b95" class="">
+</p><p id="5c0c438f-da81-4e20-935a-ef53763f58e8" class="">　□第6条（諸規定の遵守）<br/>　　室内用シューズを使用。</p><p id="249501bf-262b-43ab-9a29-26fa8aaba7dd" class="">　　身だしなみNG：全裸、半裸、運動に適さない服装（ジーンズ、スーツなど）<br/>　　　　　　　　　サンダル、ヒールなど<br/></p><p id="6d3e5a35-a4d9-461f-8427-9a409a1183cb" class="">　□第7条（入退場及び退場）<br/>　　飲酒・喫煙は禁止</p><p id="64e45462-99fb-440e-99bd-868e2a52c865" class="">
+</p><p id="c670bf3e-deab-4105-98f2-874fe3678f7f" class="">　□第8条（退会）　第9条（休会）</p><p id="03df542c-7c86-419d-b1d2-14138941f44b" class="">　　退会、休会する場合は当社が定めた期日までに所定の手続きが必要。電話対応不可</p><p id="471fc53b-521b-4471-a543-2c2de2b0df0c" class="">　　会費等は<mark class="highlight-default">退会、休会が月の途中であっても全額支払い（日割り無し）</mark></p><p id="df9ffa68-869a-44c5-8948-fec1b5a9cbf1" class="">
+</p><p id="de7c8e3e-e84e-43f0-aac5-9940f55b9b95" class="">　□第11条（諸手続き）<br/>　　申込内容に変更があった場合は速やかに変更手続きが必要。</p><p id="abdc7c75-bbed-4a67-a4f9-7fda50a9a8e1" class="">
+</p><p id="b9c6e42c-46a1-45b5-97dc-6e8d475e845b" class="">　□第12条（会員資格の停止及び除名）<br/>　　<mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong>3ヶ月連続で滞納した場合、強制退会</strong></span></mark>とし、会員登録を抹消。滞納分は全額お支払い頂く。</p><p id="5adbc868-4771-4a1e-89cf-aa361d697aab" class="">
+</p><p id="2b050551-4776-466b-a17f-e15c0ea4333f" class="">　□第21条（賠償責任）<br/>　　更衣室のロッカーの鍵を紛失した場合、<mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong>3,300円の交換手数料</strong></span></mark>が必要。</p><figure id="21c397cd-4228-42c8-bd23-be09f3ef3996" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC/5990ad18-c24e-11ed-a790-064017533d40.png"><img style="width:650px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC/5990ad18-c24e-11ed-a790-064017533d40.png"/></a></figure><p id="ee09dc78-b822-4498-96d0-f438cc5f2c3b" class="">
+</p><h2 id="68ca3261-35f3-4aa1-ab39-913bcd2b2c7e" class="">５．個人情報の取扱いについて</h2><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="63710b44-3aec-4b4b-8b1a-b11d9ea22cd6"><div style="font-size:1.5em"><img class="icon notion-static-icon" src="https://www.notion.so/icons/user_gray.svg"/></div><div style="width:100%">「当ジムではスタッフ一同、個人情報の取り扱いには細心の注意を払い、お預かりした大切なお客様の情報を厳重に管理させていただきます。」</div></figure><figure id="8e0df6f0-290d-4382-a888-f60d88e5874a" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC/6aa9a83e-c24e-11ed-a62f-064017533d40.png"><img style="width:646px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC/6aa9a83e-c24e-11ed-a62f-064017533d40.png"/></a></figure><p id="d047781b-395a-4180-af1f-bc921e3f4766" class="">
+</p><h2 id="a8c8ed45-fa1a-4392-8861-11a2d05fb567" class="">６．支払い、退会と休会の詳細案内</h2><p id="7c00859b-21b0-424b-958f-823d65091a42" class="">　「お支払いは口座からの引き落としとなります。<br/><br/>　　お支払いは料金回収代行会社のJACCSからお客様の指定金融機関へ請求になります。<br/>　　支払日は毎月27日となり、土、日、祝の場合は翌営業日となります。」</p><p id="583a6a1a-f1ec-4a83-83da-92c819dc9585" class="">
+</p><blockquote id="99d2db96-581d-4da6-8c9d-72d01b22fe6e" class="">　【退会】<br/>　「退会希望の場合、<mark class="highlight-red"><strong>毎月月末</strong></mark>までの届出で<mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong>翌月末に退会が可能</strong></span></mark>となります。<br/>　　例えば6月末までの申請で7月末の退会が可能です。」</blockquote><p id="468b85a8-fe91-4bc9-b11e-beb01f74ecec" class="">
+</p><blockquote id="6f5e6329-f901-409e-aa7d-64b09de63d2d" class="">　【休会】<br/>　「休会希望の場合、<mark class="highlight-red"><strong>毎月月末まで</strong></mark>の届出で<mark class="highlight-red"><strong>翌月1日</strong></mark>より休会が可能です。<br/>　　<mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong>休会料金として月額1,100円</strong></span></mark>をお支払い頂きます。<br/>　　例えば6月末までの申請で7月1日から休会が可能です。」</blockquote><p id="02a359c0-3f19-4619-93ad-bdb49a84f614" class="">　※退会・休会共に月の途中であっても全額支払い（日割り無し）</p><figure id="c6db3f86-0ac9-4e69-b678-a4f0b636a0e8" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC/86c38274-c24e-11ed-84ce-06720a606bea.png"><img style="width:652px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC/86c38274-c24e-11ed-84ce-06720a606bea.png"/></a></figure><p id="5f3f6e78-883b-41d4-aaac-c9959a247516" class="">
+</p><h2 id="a79600ec-63df-4e74-8725-9fc7560c7a11" class="">７．オプション申込書　※オプション契約を行う方のみ</h2><p id="b6cec3dc-a1ee-4d62-bebb-7d673eab05ec" class="">　オプション申し込みの詳細は　⇒<mark class="highlight-default">　</mark><mark class="highlight-orange_background"><a href="https://www.notion.so/4f192ddbab5d49f382eca6c4ccc60433?pvs=21">オプション登録（契約ロッカー）</a></mark><mark class="highlight-default"> </mark>　を参照 </p><h2 id="84c63d18-a65b-4956-9f2a-b07882530d99" class="">８．入会申込書の記載</h2><ul id="f4668adb-db77-46e1-b2c0-81914a8534fb" class="bulleted-list"><li style="list-style-type:disc">青色の枠で囲んでいる箇所に記載してもらう</li></ul><ul id="6fc92d4a-9c2e-461e-b9ce-a8504b5fa52e" class="bulleted-list"><li style="list-style-type:disc">擦印は不要</li></ul><figure id="665632b8-514b-44e9-a515-01312afede91" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC/c55be4ea-b105-11ed-9902-06720a606bea.png"><img style="width:657px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC/c55be4ea-b105-11ed-9902-06720a606bea.png"/></a></figure><p id="03e8c087-ba6a-4d7f-9da0-62813d98f687" class="">
+</p><p id="0710c90d-62a3-41a5-aef8-1ef266b31bcd" class="">「その間に身分証明書のコピーを取らせていただきます。」</p><h2 id="b547ff21-1704-4df2-b280-7f980c0be35a" class="">９．本人確認書類コピー</h2><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="200aa6b7-f133-440c-9d0d-e12466685ffd"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">８の入会申込書に記載していただいている間にコピーを取るとスムーズ</div></figure><h2 id="acc2da02-0e2c-4e1d-a2d3-4873844649f1" class="">１０．口座登録</h2><ul id="8c27258a-cc62-40b2-b00e-36512540520e" class="bulleted-list"><li style="list-style-type:disc">キャッシュカードの場合<br/>１．引き落とし用のキャッシュカードを預かる<br/>２．クレピコの登録を行う<br/><br/>クレピコの登録は　⇒　<mark class="highlight-orange_background"><a href="%E3%82%AF%E3%83%AC%E3%83%94%E3%82%B3%E7%99%BB%E9%8C%B2%201b01666ae8b749379a263888bb50899e.html">クレピコ登録</a></mark> 　を参照 </li></ul><p id="fe8d3ec5-f6d5-42cf-9358-8360ffd2310a" class="">
+</p><ul id="763a00ee-b249-4057-b955-09653460a3e5" class="bulleted-list"><li style="list-style-type:disc">口座振替依頼書の場合<br/>口座振替依頼書に記入してもらう<br/><br/>口座振替依頼書の詳細は　⇒　<mark class="highlight-orange_background"><a href="https://www.notion.so/b79b8642b3e640faa737eec651f55310?pvs=21">口座振替依頼書（記載方法）</a></mark> 　を参照</li></ul><h2 id="f7e951ca-8065-48cb-89c2-4a2055b3729f" class="">１１．写真撮影</h2><p id="90644c93-dfba-498d-adfa-8c412b18895e" class="">
+</p><p id="70b0fab3-e6e1-41da-9941-c51a620c9fbd" class="">　「お顔の認証と盗難時の不正利用防止のため、皆様に顔写真の登録をさせて頂いてます。<br/>　　こちらのカメラで撮影しますのでお立ち下さい。3.2.1で撮らせていただきますね。」<br/><br/>　※カメラの前に立ってもらう</p><p id="b8f9e170-eca9-41c9-8ba2-15c81c0177cc" class="">
+</p><p id="3d4bf5fe-ac3b-4c10-b0cd-a609c828c291" class="">　写真撮影は　⇒　<mark class="highlight-orange_background"></mark><mark class="highlight-orange_background"> </mark><mark class="highlight-default">　</mark>を参照 </p><h2 id="3e66b9b0-3334-4ca1-bcd8-820347ae2b4a" class="">１２．セキュリティカード発行</h2><p id="88238d30-b29e-49c9-8cf2-b4e7c1d21211" class="">　　「カードを発行させていただきます。」<br/>　　　</p><p id="5f401cc2-5a6d-4523-98ef-b7d7ce16fad7" class="">　　カード発行の詳細は　⇒　<mark class="highlight-orange_background"></mark> 　を参照</p><p id="d36927b2-f4bd-4bc9-a034-b25c1368f3d5" class="">　　「その間に入会に関するアンケートをご記入お願い致します。」</p><h2 id="b3181524-89b1-4f2a-8c69-b56c8b4caf61" class="">１３．アンケート記入</h2><p id="2b45915b-0b5b-4583-a2a1-e0ccea3eccc3" class="">　　カード発行準備中の間に記入してもらうとスムーズ</p><figure id="a64b95ff-2e1b-4ac1-97ff-b60c1082acef" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC/9ff9d946-c24e-11ed-af3e-06720a606bea.png"><img style="width:653px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC/9ff9d946-c24e-11ed-af3e-06720a606bea.png"/></a></figure><p id="79acef50-be71-4e01-ae55-0c650093f177" class="">
+</p><h2 id="ba2a47c4-63e9-4870-adf6-8c7e50c9f428" class="">１４．プロテイン、アミノ酸の試飲</h2><p id="c54d8bb7-7189-4ccc-96cf-70a4178e7b07" class="">
+</p><p id="8f328e9b-cd32-4f00-aba4-ca7eb5621079" class="">　　アンケートを記入いただいた後の待ち時間を利用する<br/>　　手の空いているスタッフがプロテイン、アミノ酸を紙コップに準備し、入会対応中のスタッフ<br/>　　は登録手続きを進める</p><h2 id="cebcee1c-6525-4adb-bfe6-ec1f206fdc8a" class="">１５．お支払い</h2><p id="d2e311da-1170-47cb-9713-a5f31a02a150" class="">　　スタッフがオレンジ色の枠内を記載して口頭でも説明し、支払いをしていただく<br/>　　支払金額は新規入会登録が終わった際に表示される金額を記載する</p><p id="99006b31-d852-42d7-b1c3-8eaf1119c4ab" class="">
+</p><p id="588e4079-b07c-4e6e-87fb-a926931b9208" class="">　新規入会登録の詳細は　<br/>　　　⇒　<mark class="highlight-orange_background"></mark><mark class="highlight-orange_background"> </mark>　を参照</p><p id="f7f3e78d-a8d0-4a6e-b705-bb6e87265c46" class="">
+</p><p id="1b881776-8ef3-4968-86d1-eef9bd7ab9f0" class=""><strong><mark class="highlight-red">※口座振替の人は当月・翌月・翌々月の会費を受付で支払ってもらう</mark></strong></p><figure id="1a7b132c-fbe9-4f4a-96f9-6d5b1b9fabb2" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC/c55be4ea-b105-11ed-9902-06720a606bea%201.png"><img style="width:657px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC/c55be4ea-b105-11ed-9902-06720a606bea%201.png"/></a></figure><p id="6f2934b2-ca6a-42aa-8f01-329fa407a159" class="">
+</p><p id="eb2f90a8-5996-48f8-a07b-9021466f3752" class="">会計方法詳細は　→　<mark class="highlight-orange_background"><a href="https://www.notion.so/632f60c3d76f42b296b6b6efbbb197ae?pvs=21">会計</a></mark><mark class="highlight-orange_background"> </mark>　を参照</p><h2 id="c2fc1c6d-6ad8-4e98-85ab-60e6d17e8ec1" class="">１６．控え（コピー）のお渡し</h2><p id="1b58a2ec-5163-4618-8443-9b691d7b60b9" class="">　「お客様のお控えです。本日説明させていただきました内容が記載されておりますので<br/>　　お渡しさせていただきます。」<br/>　　（クレピコ控え、申込書類コピー、利用規約、個人情報取り扱い、支払い方法）</p><h2 id="a66d20a3-d5f8-471b-a98a-a1f6d335291e" class="">１７．オリエンテーション受講有無の確認＆カードお渡し</h2><ul id="f4d4d513-15d6-4b20-aa59-5b1999287c31" class="bulleted-list"><li style="list-style-type:disc">オリエンテーションの説明をし、受講するか確認する。（受講の場合は予約を取る）<br/><br/>オリエンテーションの詳細は　を参照</li></ul><ul id="c7d4ac9d-6f58-475c-ac94-96bf0bdfc577" class="bulleted-list"><li style="list-style-type:disc">カードに発行日と会員番号を記載してお渡しする<br/><br/>※オリエンテーションの受講有無に関係なく全員にお渡しする<br/>※カードは2種類「オリエンテーション・サポートプログラム受講用」と<br/>　「来館10回用」どちらがいいか選んでもらう</li></ul><h3 id="08cc013c-499f-4d91-adde-ed0317e67951" class=""><mark class="highlight-yellow_background">カード詳細</mark></h3><ol type="1" id="a44a2457-e3d1-48a6-9633-07034c2ac735" class="numbered-list" start="1"><li>オリエンテーション・サポートプログラム受講用<br/>・オリエンテーションやサポートプログラムを受講するごとにスタンプを押す<br/>・計5個スタンプがたまったらホエイトライアルパック（1袋30g）をプレゼント<figure id="4ddad779-d83b-44b2-8958-f2b4d5820e0c" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC/e8e6b07a-d743-11ed-8f7d-06720a606bea.png"><img style="width:348px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC/e8e6b07a-d743-11ed-8f7d-06720a606bea.png"/></a></figure><p id="c4c37aa7-6c8a-4517-a263-b0557d4ced0e" class="">
+</p></li></ol><ol type="1" id="e14b83e8-44c3-4760-8f03-0085d586f32c" class="numbered-list" start="2"><li>来館10回用<br/>・来館したらスタンプを押す<br/>・計10個スタンプがたまったらホエイトライアルパック（1袋30g）をプレゼント<br/>・有効期限は発行から2か月<br/><figure id="7d1aeddb-d0d7-4088-9b99-d231024bd32f" class="image"><a href="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC/f309fc74-d743-11ed-aeba-06720a606bea.png"><img style="width:344px" src="%E5%85%A5%E4%BC%9A%E3%83%95%E3%83%AD%E3%83%BC/f309fc74-d743-11ed-aeba-06720a606bea.png"/></a></figure><p id="dba856c3-bef6-494c-9cb3-183b8d51df18" class="">
+</p></li></ol><h2 id="45521ca7-7e99-4bc9-97e7-841019c5d73d" class="">１８．LINE友達登録</h2><p id="e459b834-9fa1-4a59-9cfd-dbb9d437440e" class="">「会員様限定で、LINEから館内のリアルタイムの混雑状況が確認できます。<br/>　設定を一緒にさせていただいてもよろしいでしょうか。」<br/><br/>LINE登録の詳細は　⇒　<mark class="highlight-orange_background"><a href="LINE%E7%99%BB%E9%8C%B2%204ffe2509b7f84a628521bad6822672f8.html">LINE登録</a></mark><mark class="highlight-orange_background"> </mark>　を参照</p><p id="7aa1ca68-358c-4513-a76a-ad2e28c17a9d" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,721 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>ECAIの紐付け</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="97b6ab2d-5f4f-4bba-82c8-8da3d856add9" class="page sans"><header><h1 class="page-title">ECAIの紐付け</h1><p class="page-description"></p></header><div class="page-body"><hr id="501f0dcd-5c64-410a-a02e-eb8d33c636f1"/><h1 id="49c9bb2b-cf20-4ef8-be1c-306ef8d3ab93" class="">目的</h1><hr id="82257c1d-a12a-4cf9-a25d-0f476130133a"/><p id="6c0103e5-2dc5-4b7e-b13d-2b4ff6f9da7c" class="">入会者でLINE登録を行ってくれた方をECAIと紐付けること</p><p id="561b11eb-8861-46a5-acf4-7ffdc61a7a04" class="">紐付けることによってECAIによるLINE一斉配信やお客様満足度アンケートの案内など配信できるようになる</p><p id="107b1bbb-ff30-40c9-8610-99e084fc1d91" class="">
+</p><h2 id="01928977-c47a-4327-9a70-1d435442abb1" class="">ルール</h2><hr id="2736b1a2-a6ea-4e7d-8e68-7c3d63b9e972"/><p id="9505cc5d-f498-4981-a3b2-99674a371958" class="">LINE登録を行っていること</p><p id="65af7bf4-4252-4123-b947-c002bc7b5309" class="">
+</p><h1 id="a4e31f0b-5c0a-4d6b-bf1e-0f45b04a8ee2" class="">手順</h1><hr id="4c6e4154-c961-4fcf-a2e3-0360064e11d2"/><h2 id="2943d570-f830-4461-a6af-9c30d67b2617" class="">１．LINE登録を行ってもらう</h2><p id="b88b97e6-c57e-417f-bf89-0bd0ad22fb4d" class="">やり方は　⇒<mark class="highlight-default">　</mark><mark class="highlight-orange_background"><a href="LINE%E7%99%BB%E9%8C%B2%204ffe2509b7f84a628521bad6822672f8.html">LINE登録</a></mark><mark class="highlight-default"> </mark>　を参照</p><p id="b89b3ea3-0ea0-412a-bd5b-6958921aae3b" class="">
+</p><h2 id="439430be-63ce-4c00-8a19-0bca21bf098b" class="">２．ECAIのサイトを開く</h2><figure id="7c6c466c-80af-40ef-9d76-424c076e27a6"><a href="https://gronggym.ecai.jp/top-global" class="block-color-teal_background bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href">https://gronggym.ecai.jp/top-global</div></div></a></figure><p id="e96f4ad0-5fc6-440b-bae4-7f733b999166" class="">
+</p><h2 id="5476fe7b-fce1-404e-86be-8d2e2a221efd" class="">３．ホーム画面の左側にある「3BO」をクリック</h2><figure id="e2f25826-a588-4a03-b76f-c1257c349636" class="image"><a href="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/ec948586-c2de-11ed-8da9-064017533d40.png"><img style="width:526px" src="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/ec948586-c2de-11ed-8da9-064017533d40.png"/></a></figure><p id="0804d110-224c-4c9f-a9aa-fc8c6adbe854" class="">
+</p><h2 id="ab9d1887-0895-4b5b-84f0-72cdff5bc7ff" class="">４．「受信BOX」をクリック</h2><figure id="6769a69c-7173-4501-9f4b-6e795ca0d9c2" class="image"><a href="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/06364b00-c2df-11ed-add6-06720a606bea.png"><img style="width:322px" src="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/06364b00-c2df-11ed-add6-06720a606bea.png"/></a></figure><p id="bdd9918c-7a14-47a9-beec-c619122e0e7f" class="">
+</p><h2 id="90315eb9-ab15-47c6-803b-c48153bb4ae6" class="">５．該当者の「トークを開く」をクリック</h2><figure id="854574ae-be7d-493f-95cf-cbcc6535f905" class="image"><a href="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/3b9eb0b6-c2df-11ed-8a7a-064017533d40.png"><img style="width:709.921875px" src="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/3b9eb0b6-c2df-11ed-8a7a-064017533d40.png"/></a></figure><p id="e55afccf-4191-49ec-9da1-958bde862017" class="">
+</p><h2 id="8b9b96e3-8414-4c55-91eb-dbaf6fcda361" class="">６．画面右側の「タグ」の「編集」をクリック</h2><figure id="52496449-3895-441d-b718-81ab300d1f55" class="image"><a href="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/4b0b5a82-d8d2-11ed-b9ec-06720a606bea.png"><img style="width:351px" src="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/4b0b5a82-d8d2-11ed-b9ec-06720a606bea.png"/></a></figure><p id="111e8db6-158d-4875-9e68-339d498f14bd" class="">
+</p><h2 id="309faa5b-eeb5-43a7-9bfa-449e75e5cfea" class="">７．会員タグを追加＆ステップ配信タブの削除</h2><p id="155194fd-0644-4d1a-b934-c1db6bd0a3fb" class="">
+</p><p id="ef7fd396-61de-4a35-999d-f9f74ba2a092" class="">　※空白をクリックすると選択タブが出てくる</p><p id="fcd28a04-4243-4ef1-bf56-db75545a2e15" class="block-color-default">　<mark class="highlight-orange"><span style="border-bottom:0.05em solid"><strong>ステップ配信のタグが付いている場合は削除しておくこと</strong></span></mark></p><figure id="86841f70-3ef9-4fbc-9183-d584b127404a" class="image"><a href="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/d66b2e94-c2df-11ed-a29b-064017533d40.png"><img style="width:324px" src="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/d66b2e94-c2df-11ed-a29b-064017533d40.png"/></a></figure><p id="72447e0e-9934-47d6-916f-14ca324699c1" class="">
+</p><h2 id="53628ba8-c5b3-4f04-a281-b1d9b7455ada" class="">８．会員タブが追加されたら「保存」をクリック</h2><figure id="bdd1e3e9-b0b5-4582-90e0-3454f8e5059a" class="image"><a href="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/9733f8fa-c2df-11ed-bcd9-064017533d40.png"><img style="width:327px" src="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/9733f8fa-c2df-11ed-bcd9-064017533d40.png"/></a></figure><p id="6336fda1-92a4-4d8e-acf7-b67bc386f387" class="">
+</p><h2 id="0db41a8c-0070-44f0-b893-c51cde84d00f" class="">９．3BOの受信BOXに戻って該当者のステータスを「対応完了」にする</h2><figure id="5e073120-dfff-4ff5-96b3-08f3d44db85d" class="image"><a href="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/6a86148a-b96d-11ed-939b-06720a606bea.png"><img style="width:709.9375px" src="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/6a86148a-b96d-11ed-939b-06720a606bea.png"/></a></figure><p id="19573208-9141-4f6b-bdec-14391ae55932" class="">
+</p><h2 id="ad4b1c3b-e62f-4d3c-b690-43717a9e66d7" class="">１０．会員システムの会員情報にECAIのIDを登録する</h2><p id="9365e2c0-2f0a-4745-b25b-05902ec9c9fd" class="">
+</p><ol type="1" id="fdeb14b7-618b-4e21-8903-c7d7b3cee7e9" class="numbered-list" start="1"><li>ECAIのIDをコピーする<figure id="e04ba95b-7074-4565-940d-d97efbbffad4" class="image"><a href="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/f8979b02-d8d2-11ed-b492-06720a606bea.png"><img style="width:347px" src="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/f8979b02-d8d2-11ed-b492-06720a606bea.png"/></a></figure><p id="478fd43f-d9ea-4f07-8b6f-a5de909d62dc" class="">
+</p></li></ol><p id="a6e03ab6-ce11-409d-a1dc-4acd216da077" class="">2.会員システムを開き該当する会員さんの会員情報を開き編集をクリック</p><figure id="ceca763e-41e5-4c3d-b470-8bf2ddd6c6e7" class="image"><a href="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/769c67c6-d8d3-11ed-83cc-06720a606bea.png"><img style="width:709.96875px" src="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/769c67c6-d8d3-11ed-83cc-06720a606bea.png"/></a></figure><p id="859d56e3-849f-43dc-9cef-925e44e20c5b" class="">
+</p><p id="11df5f61-2de1-4bbd-9e84-014bd034e207" class="">3.ECAI IDの箇所にコピーしたID番号を貼り付け、内容確認へ進むをクリックして登録を完了する</p><figure id="c6aa032a-b867-4d5d-b038-719e66e04844" class="image"><a href="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/b5998f9e-d8d3-11ed-847a-06720a606bea.png"><img style="width:500px" src="ECAI%E3%81%AE%E7%B4%90%E4%BB%98%E3%81%91/b5998f9e-d8d3-11ed-847a-06720a606bea.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
